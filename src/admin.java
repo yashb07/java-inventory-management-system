@@ -1,3 +1,5 @@
+//VM options --module-path "D:\javafx-sdk-17.0.0.1\lib" --add-modules javafx.controls,javafx.fxml
+
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
