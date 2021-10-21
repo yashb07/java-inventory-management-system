@@ -56,7 +56,7 @@ public class employee extends Application{
         employee_sales.setPrefWidth(350);
         employee_sales.setMaxWidth(350);
 
-//        main_layout.getChildren().add(gp);
+        main_layout.getChildren().add(gp);
         Scene sc=new Scene(main_layout,500, 500);
         mainStage.setMaxWidth(500);
         mainStage.setMaxHeight(500);

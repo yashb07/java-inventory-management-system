@@ -6,6 +6,7 @@ import javafx.stage.Stage;
 import javafx.scene.layout.GridPane;
 
 import javax.swing.*;
+import java.sql.SQLException;
 
 public class Login extends Application{
     @Override public void start(Stage mainStage) throws Exception {
@@ -38,16 +39,28 @@ public class Login extends Application{
         b.getStyleClass().add("login-btn");
         gp.add(b, 1, 3);
         b.setOnAction(e -> {
-            var admin = 1;
             try {
-                if (admin == 1) {
+                String role = Check_User.Check_Credentials(user.getText(),pass.getText());
+                if(role.equalsIgnoreCase("admin"))
+                {
+                    System.out.println("login success as admin");
                     admin adm = new admin();
                     adm.start(mainStage);
                 }
-                else if (admin == 0) {
+                else if(role.equalsIgnoreCase("employee"))
+                {
+                    System.out.println("Successfully logged in as Employee");
                     employee emp = new employee();
                     emp.start(mainStage);
                 }
+
+                else
+                {
+                    Alert_Box.display("Login Error","User Does not Exist");
+                }
+
+            } catch (SQLException ex) {
+                System.out.println(ex.getLocalizedMessage());
             } catch (Exception exception) {
                 exception.printStackTrace();
             }
