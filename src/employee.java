@@ -19,7 +19,6 @@ public class employee extends Application{
         Button manage_add = new Button("Add sales");
         option_bar.getChildren().addAll(manage_view,manage_add);
         option_bar.setSpacing(5);
-
         //layout as an object for add sales
         GridPane gp = new GridPane();
         Label employee_id_label = new Label("Employee Id");
