@@ -30,7 +30,7 @@ public class viewSales extends Application{
 
         manageEmp.setOnAction(e -> {
             try {
-                admin adEmp = new admin();
+                adminEmployee adEmp = new adminEmployee();
                 adEmp.start(mainStage);
             } catch (Exception exception) {
                 exception.printStackTrace();
