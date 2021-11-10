@@ -87,7 +87,15 @@ public class Add_Sales extends Application{
 
         });
 
-        close_btn.setOnAction(e ->{add_sales_stage.close();});
+        close_btn.setOnAction(e ->{
+            add_sales_stage.close();
+            employee emp = new employee();
+            try {
+                emp.start(add_sales_stage);
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        });
 
         Scene add_scene = new Scene(add_page);
         add_sales_stage.setTitle("Add Sales");

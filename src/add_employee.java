@@ -115,7 +115,13 @@ public class add_employee extends Application {
 
         });
 
-        close_btn.setOnAction(e ->{add_emp_stage.close();});
+        close_btn.setOnAction(e ->{add_emp_stage.close();
+            admin adm = new admin();
+            try {
+                adm.start(add_emp_stage);
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }});
 
         Scene add_scene = new Scene(add_page);
         add_emp_stage.setTitle("Add New Employee");

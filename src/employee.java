@@ -15,52 +15,35 @@ public class employee extends Application{
 
         //layout as a object for options
         HBox option_bar = new HBox();
-        Button manage_view = new Button("view stock");
-        Button manage_add = new Button("Add sales");
+        Button manage_view = new Button("Add Sales");
+        Button manage_add = new Button("Update Inventory");
         option_bar.getChildren().addAll(manage_view,manage_add);
         option_bar.setSpacing(5);
         //layout as an object for add sales
-        GridPane gp = new GridPane();
-        Label employee_id_label = new Label("Employee Id");
-        Label employee_name_label = new Label("Employee Name");
-        Label employee_sales_label = new Label("Sales");
-        Label employee_sales_date_label = new Label("Sales Date");
+        manage_view.setOnAction(e->{
+            Add_Sales sales = new Add_Sales();
+            try {
+                sales.start(mainStage);
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        });
 
-        TextField employee_id = new TextField();
-        TextField employee_name = new TextField();
-        TextField employee_sales = new TextField();
-        DatePicker sales_date  = new DatePicker();
-        Button btn_add = new Button("Add");
-        Button btn_close = new Button("Close");
-
-        gp.setHgap(10);
-        gp.setVgap(20);
-
-        gp.setPadding(new Insets(10,10,10,10));
-
-        gp.add(employee_id_label,1,3);
-        gp.add(employee_name_label,1,4);
-        gp.add(employee_sales_label,1,5);
-        gp.add(employee_sales_date_label,1,6);
-        gp.add(employee_id,2,3);
-        gp.add(employee_name,2,4);
-        gp.add(employee_sales,2,5);
-        gp.add(sales_date,2,6);
-        gp.add(btn_add,1,7);
-        gp.add(btn_close,2,7);
-        employee_id.setPrefWidth(350);
-        employee_id.setMaxWidth(350);
-        employee_name.setPrefWidth(350);
-        employee_name.setMaxWidth(350);
-        employee_sales.setPrefWidth(350);
-        employee_sales.setMaxWidth(350);
-
-        main_layout.getChildren().add(gp);
-        Scene sc=new Scene(main_layout,500, 500);
+        manage_add.setOnAction(e->{
+            Update_Inventory_Employee uinv = new Update_Inventory_Employee();
+            try {
+                uinv.start(mainStage);
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        });
+        Scene sc=new Scene(main_layout,300, 150);
         mainStage.setMaxWidth(500);
         mainStage.setMaxHeight(500);
         main_layout.getChildren().add(option_bar);
         mainStage.setScene(sc);
+        mainStage.setTitle("Employee");
+        mainStage.setResizable(false);
         mainStage.show();
     }
 }

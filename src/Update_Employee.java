@@ -139,7 +139,13 @@ public class Update_Employee extends Application{
 
         });
 
-        close_btn.setOnAction(e ->{update_emp_stage.close();});
+        close_btn.setOnAction(e ->{update_emp_stage.close();
+            admin adm = new admin();
+            try {
+                adm.start(update_emp_stage);
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }});
 
         Scene add_scene = new Scene(add_page);
         update_emp_stage.setTitle("Modify Employee");

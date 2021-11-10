@@ -9,7 +9,7 @@ import javafx.scene.layout.HBox;
 import java.sql.*;
 import java.time.ZoneId;
 
-public class Updte_Inventory extends Application{
+public class Update_Inventory_Employee extends Application{
     public static void main(String args[])
     {
         launch(args);
@@ -105,7 +105,7 @@ public class Updte_Inventory extends Application{
                         java.util.Date.from(dp.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
                 java.sql.Date dp1 = new java.sql.Date(date.getTime());
 
-                  String query = "update inventory set Item_type = '"+item_type.getText()+"', Item_Name = '"+item_name.getText()+"', Item_Quantity = "+item_quantity.getText()+",Item_Price  = "+item_price.getText()+", Expiry_date= '"+dp1+"'  where Item_Id = "+item_id.getText();
+                String query = "update inventory set Item_type = '"+item_type.getText()+"', Item_Name = '"+item_name.getText()+"', Item_Quantity = "+item_quantity.getText()+",Item_Price  = "+item_price.getText()+", Expiry_date= '"+dp1+"'  where Item_Id = "+item_id.getText();
 
                 Connection con = DriverManager.getConnection(
                         "jdbc:mysql://localhost:3306/" + database_name, User_name, password);
@@ -161,7 +161,7 @@ public class Updte_Inventory extends Application{
         });
 
         close_btn.setOnAction(e ->{update_emp_stage.close();
-            admin adm = new admin();
+            employee adm = new employee();
             try {
                 adm.start(update_emp_stage);
             } catch (Exception ex) {
