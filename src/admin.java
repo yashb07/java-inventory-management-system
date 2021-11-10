@@ -6,33 +6,35 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
-import javafx.scene.layout.HBox;
+import javafx.scene.layout.*;
 
 public class admin extends Application{
     @Override public void start(Stage mainStage) throws Exception {
         HBox hb = new HBox();
-        Scene sc = new Scene(hb, 400, 600);
-        sc.getStylesheets().add("style.css");
-        mainStage.setScene(sc);
-        mainStage.setTitle("Admin");
-        mainStage.show();
-        hb.setAlignment(Pos.TOP_CENTER);
-        hb.setPadding(new Insets(15, 12, 15, 12));
-        hb.setSpacing(10);
-        hb.setStyle("-fx-background-color: #808080;");
+        VBox mainLayout = new VBox();
+        HBox list = new HBox();
+        Button add = new Button("Add");
+        Button Modify = new Button("Modify");
 
+        Button viewEmp = new Button("View\nEmployee");
+        hb.getChildren().add(viewEmp);
         Button manageEmp = new Button("Manage\nEmployee");
         hb.getChildren().add(manageEmp);
-        Button updateInventory = new Button("Update\nInventory");
-        hb.getChildren().add(updateInventory);
-        Button viewStocks = new Button("View\nStocks");
-        hb.getChildren().add(viewStocks);
+
         Button viewSales = new Button("View\nSales");
         hb.getChildren().add(viewSales);
 
+        Button updateInventory = new Button("Manage \nInventory");
+        hb.getChildren().add(updateInventory);
+
         manageEmp.setOnAction(e -> {
+//            list.setVisible(true);
+        });
+
+
+        viewEmp.setOnAction(e -> {
             try {
-                adminEmployee adEmp = new adminEmployee();
+                Display_Employee_Table adEmp = new Display_Employee_Table();
                 adEmp.start(mainStage);
             } catch (Exception exception) {
                 exception.printStackTrace();
@@ -48,14 +50,6 @@ public class admin extends Application{
             }
         });
 
-        viewStocks.setOnAction(e -> {
-            try {
-                viewStocks vStock = new viewStocks();
-                vStock.start(mainStage);
-            } catch (Exception exception) {
-                exception.printStackTrace();
-            }
-        });
 
         viewSales.setOnAction(e -> {
             try {
@@ -65,5 +59,18 @@ public class admin extends Application{
                 exception.printStackTrace();
             }
         });
+
+        mainLayout.getChildren().addAll(hb,list);
+
+        Scene sc = new Scene(mainLayout, 300, 150);
+        sc.getStylesheets().add("style.css");
+        mainStage.setScene(sc);
+        mainStage.setTitle("Admin");
+        mainStage.show();
+        mainStage.setResizable(false);
+        hb.setAlignment(Pos.CENTER);
+        hb.setPadding(new Insets(15, 12, 15, 12));
+        hb.setSpacing(10);
+        hb.setStyle("-fx-background-color: #808080;");
     }
 }

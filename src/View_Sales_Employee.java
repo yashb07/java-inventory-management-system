@@ -22,7 +22,7 @@ public class View_Sales_Employee extends Application{
     public void start(Stage primaryStage) throws Exception
     {
         window = primaryStage;
-        window.setTitle("Employees List");
+        window.setTitle("Sales");
 
         TableColumn<Sales_Data,Integer> emp_id =new TableColumn<>("Employee_id");
         TableColumn<Sales_Data,String> emp_name =new TableColumn<>("Employee_name ");
