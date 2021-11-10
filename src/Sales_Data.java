@@ -4,10 +4,10 @@ public class Sales_Data {
 
     private String Employee_name;
     private int Employee_id;
-    private double Sales;
+    private int Sales;
     private Date date = new Date();
 
-    public Sales_Data(int employee_id, String employee_name, double sales, Date date) {
+    public Sales_Data(int employee_id, String employee_name, int sales, Date date) {
         this.Employee_name = employee_name;
         this.Employee_id = employee_id;
         this.Sales = sales;
@@ -37,11 +37,11 @@ public class Sales_Data {
         Employee_id = employee_id;
     }
 
-    public double getSales() {
+    public int getSales() {
         return Sales;
     }
 
-    public void setSales(double sales) {
+    public void setSales(int sales) {
         Sales = sales;
     }
 

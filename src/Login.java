@@ -1,12 +1,11 @@
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import javafx.scene.control.PasswordField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 import javafx.scene.layout.GridPane;
+
+import javax.swing.*;
 import java.sql.SQLException;
 
 public class Login extends Application{
@@ -19,7 +18,7 @@ public class Login extends Application{
         sc.getStylesheets().add("style.css");
         mainStage.setResizable(false);
         mainStage.setScene(sc);
-        mainStage.setTitle("Store Login");
+        mainStage.setTitle("Click Label");
         mainStage.show();
 
         Label username = new Label("Username: ");

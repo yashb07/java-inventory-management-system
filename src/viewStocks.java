@@ -13,7 +13,7 @@ public class viewStocks extends Application{
         sc.getStylesheets().add("style.css");
         mainStage.setScene(sc);
         mainStage.setTitle("View Stocks");
-        mainStage.show( );
+        mainStage.show();
         hb.setAlignment(Pos.TOP_CENTER);
         hb.setPadding(new Insets(15, 12, 15, 12));
         hb.setSpacing(10);
@@ -29,12 +29,12 @@ public class viewStocks extends Application{
         hb.getChildren().add(viewSales);
 
         manageEmp.setOnAction(e -> {
-//            try {
-//                adminEmployee adEmp = new adminEmployee();
-//                adEmp.start(mainStage);
-//            } catch (Exception exception) {
-//                exception.printStackTrace();
-//            }
+            try {
+                adminEmployee adEmp = new adminEmployee();
+                adEmp.start(mainStage);
+            } catch (Exception exception) {
+                exception.printStackTrace();
+            }
         });
 
         updateInventory.setOnAction(e -> {
