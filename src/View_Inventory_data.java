@@ -11,6 +11,7 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
 
 import java.sql.*;
+
 public class View_Inventory_data extends Application{
     Stage window;
     TableView<Inventory_Data> inventory_table;

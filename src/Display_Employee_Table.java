@@ -53,11 +53,25 @@ public class Display_Employee_Table extends Application{
         employee_table.getColumns().addAll(emp_id,emp_name,emp_username,emp_password,emp_role);
 
         VBox emp_view_mode = new VBox();
-        emp_view_mode.getChildren().addAll(employee_table);
+        Button close = new Button("Close");
+
+        emp_view_mode.getChildren().addAll(employee_table,close );
 
         Scene view_scene = new Scene(emp_view_mode);
+
         window.setScene(view_scene);
         window.show();
+
+
+        close.setOnAction(e->{
+            window.close();
+            admin adm = new admin();
+            try {
+                adm.start(primaryStage);
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        });
     }
 
     public ObservableList<Employee_Data> get_emp_list()

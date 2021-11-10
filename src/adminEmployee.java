@@ -21,14 +21,13 @@ public class adminEmployee extends Application{
         hb.setSpacing(10);
         hb.setStyle("-fx-background-color: #808080;");
 
-        Button manageEmp = new Button("Manage\nEmployee");
+        Button manageEmp = new Button("Add\nEmployee");
         hb.getChildren().add(manageEmp);
         Button updateInventory = new Button("Update\nInventory");
         hb.getChildren().add(updateInventory);
-        Button viewStocks = new Button("View\nStocks");
-        hb.getChildren().add(viewStocks);
-        Button viewSales = new Button("View\nSales");
-        hb.getChildren().add(viewSales);
+
+        Button viewEmployee = new Button("Update\nInventory");
+        hb.getChildren().add(updateInventory);
 
         manageEmp.setOnAction(e -> {
             try {
@@ -47,23 +46,23 @@ public class adminEmployee extends Application{
                 exception.printStackTrace();
             }
         });
-
-        viewStocks.setOnAction(e -> {
-            try {
-                viewStocks vStock = new viewStocks();
-                vStock.start(mainStage);
-            } catch (Exception exception) {
-                exception.printStackTrace();
-            }
-        });
-
-        viewSales.setOnAction(e -> {
-            try {
-                viewSales vSales = new viewSales();
-                vSales.start(mainStage);
-            } catch (Exception exception) {
-                exception.printStackTrace();
-            }
-        });
+//
+//        viewStocks.setOnAction(e -> {
+//            try {
+//                viewStocks vStock = new viewStocks();
+//                vStock.start(mainStage);
+//            } catch (Exception exception) {
+//                exception.printStackTrace();
+//            }
+//        });
+//
+//        viewSales.setOnAction(e -> {
+//            try {
+//                viewSales vSales = new viewSales();
+//                vSales.start(mainStage);
+//            } catch (Exception exception) {
+//                exception.printStackTrace();
+//            }
+//        });
     }
 }

@@ -29,12 +29,12 @@ public class updateInventory extends Application{
         hb.getChildren().add(viewSales);
 
         manageEmp.setOnAction(e -> {
-            try {
-                adminEmployee adEmp = new adminEmployee();
-                adEmp.start(mainStage);
-            } catch (Exception exception) {
-                exception.printStackTrace();
-            }
+//            try {
+//                adminEmployee adEmp = new adminEmployee();
+//                adEmp.start(mainStage);
+//            } catch (Exception exception) {
+//                exception.printStackTrace();
+//            }
         });
 
         updateInventory.setOnAction(e -> {
