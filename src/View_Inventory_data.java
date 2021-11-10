@@ -55,8 +55,18 @@ public class View_Inventory_data extends Application{
         inventory_table.getColumns().addAll(item_id,item_type,item_name,item_quantity,item_price,expiry_date);
 
         VBox emp_view_mode = new VBox();
-        emp_view_mode.getChildren().addAll(inventory_table);
-
+//        emp_view_mode.getChildren().addAll(inventory_table);
+        Button close = new Button("Close");
+        close.setOnAction(e->{
+            window.close();
+            admin adm = new admin();
+            try {
+                adm.start(primaryStage);
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        });
+        emp_view_mode.getChildren().addAll(inventory_table,close);
         Scene view_scene = new Scene(emp_view_mode);
         window.setScene(view_scene);
         window.show();

@@ -48,8 +48,19 @@ public class View_Sales_Employee extends Application{
         employee_table.getColumns().addAll(emp_id,emp_name,emp_sales,sales_date);
 
         VBox emp_view_mode = new VBox();
-        emp_view_mode.getChildren().addAll(employee_table);
+//        emp_view_mode.getChildren().addAll(employee_table);
+        Button close = new Button("Close");
 
+        emp_view_mode.getChildren().addAll(employee_table,close );
+        close.setOnAction(e->{
+            window.close();
+            admin adm = new admin();
+            try {
+                adm.start(primaryStage);
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        });
         Scene view_scene = new Scene(emp_view_mode);
         window.setScene(view_scene);
         window.show();

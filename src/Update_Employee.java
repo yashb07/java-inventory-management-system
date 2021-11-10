@@ -13,17 +13,14 @@ import javafx.scene.layout.HBox;
 
 import java.sql.*;
 
-
-public class add_employee extends Application {
-
-
+public class Update_Employee extends Application{
     public static void main(String args[])
     {
         launch(args);
     }
 
     @Override
-    public void start(Stage add_emp_stage) throws Exception
+    public void start(Stage update_emp_stage) throws Exception
     {
         GridPane add_page = new GridPane();
         Label emp_id_label = new Label("Employee Id");
@@ -66,11 +63,13 @@ public class add_employee extends Application {
         add_page.add(emp_role_label,1,5);
         add_page.add(radio_box,2,5);
 
-        Button add_btn = new Button("Add");
+        Button add_btn = new Button("Modify");
+        Button delete_btn = new Button("Delete");
         Button close_btn = new Button("Close");
 
         add_page.add(add_btn,1,6);
-        add_page.add(close_btn,2,6);
+        add_page.add(delete_btn,2,6);
+        add_page.add(close_btn,3,6);
 
         add_btn.setOnAction(e -> {
             try {
@@ -85,17 +84,12 @@ public class add_employee extends Application {
                     role = "employee";
                 }
 
-
-                String query = "insert into employee values (?,?,?,?,?)";
+                String query = "update employee set Name = '"+emp_name.getText()+"', Username = '"+emp_username.getText()+"', Password = '"+emp_password.getText()+"', Role = '"+role+"'  where EmployeeId = "+emp_id.getText();
 
                 Connection con = DriverManager.getConnection(
                         "jdbc:mysql://localhost:3306/" + database_name, User_name, password);
                 PreparedStatement stmt = con.prepareStatement(query);
-                stmt.setInt(1,Integer.parseInt(emp_id.getText()));
-                stmt.setString(2,emp_name.getText());
-                stmt.setString(3,emp_username.getText());
-                stmt.setString(4,emp_password.getText());
-                stmt.setString(5,role);
+                System.out.println(stmt);
                 int rs = stmt.executeUpdate();
 
                 if(rs>0)
@@ -106,7 +100,37 @@ public class add_employee extends Application {
                     emp_password.clear();
                     emp_role.clear();
                     admin.setSelected(false);
-                    Alert_Box.display("Success Message","Data Added Successfully");
+                    Alert_Box.display("Success Message","Data Modified Successfully");
+                }
+
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+
+        });
+        delete_btn.setOnAction(e -> {
+            try {
+                String User_name = "root";
+                String password = "Hacker@HG123";
+                String database_name = "store";
+
+                String query = "delete from employee where EmployeeId = "+emp_id.getText();
+
+                Connection con = DriverManager.getConnection(
+                        "jdbc:mysql://localhost:3306/" + database_name, User_name, password);
+                PreparedStatement stmt = con.prepareStatement(query);
+
+                int rs = stmt.executeUpdate();
+
+                if(rs>0)
+                {
+                    emp_id.clear();
+                    emp_name.clear();
+                    emp_username.clear();
+                    emp_password.clear();
+                    emp_role.clear();
+                    admin.setSelected(false);
+                    Alert_Box.display("Success Message","Data Deleted Successfully");
                 }
 
             } catch (SQLException throwables) {
@@ -115,18 +139,17 @@ public class add_employee extends Application {
 
         });
 
-        close_btn.setOnAction(e ->{add_emp_stage.close();
+        close_btn.setOnAction(e ->{update_emp_stage.close();
             admin adm = new admin();
             try {
-                adm.start(add_emp_stage);
+                adm.start(update_emp_stage);
             } catch (Exception ex) {
                 ex.printStackTrace();
             }});
 
         Scene add_scene = new Scene(add_page);
-        add_emp_stage.setTitle("Add New Employee");
-        add_emp_stage.setScene(add_scene);
-        add_emp_stage.show();
+        update_emp_stage.setTitle("Modify Employee");
+        update_emp_stage.setScene(add_scene);
+        update_emp_stage.show();
     }
 }
-
